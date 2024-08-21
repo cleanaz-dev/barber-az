@@ -26,11 +26,6 @@ import SingleAppointment from "./SingleAppointment";
 
 const navigationData = [
  {
-  icon: <Home className="h-5 w-5" />,
-  label: "Home",
-  href: "/",
- },
- {
   icon: <BookCheck className="h-5 w-5" />,
   label: "Appointments",
   href: "/admin/appointments",
@@ -53,55 +48,59 @@ const navigationData = [
 ];
 
 const UpcomingAppointments = ({ bookings }) => {
- return (
-  <div className="mt-auto p-4">
-   <Card className="">
-    <CardHeader className="pb-4">
-     <CardTitle className="text-sm">Upcoming Appointments</CardTitle>
-    </CardHeader>
-    <CardContent>
-     {bookings
-      .filter((booking) => {
-       // Get the booking date as a Date object
-       const bookingDate = new Date(booking.date);
-       // Get today's date
-       const today = new Date();
-       // Get yesterday's date
-       const yesterday = new Date(today);
-       yesterday.setDate(today.getDate() - 1);
+  const upcomingBookings = bookings.filter((booking) => {
+    // Get the booking date as a Date object
+    const bookingDate = new Date(booking.date);
+    // Get today's date
+    const today = new Date();
+    // Get yesterday's date
+    const yesterday = new Date(today);
+    yesterday.setDate(today.getDate() - 1);
 
-       // Check if the booking date is today, yesterday, or in the future
-       return (
-        bookingDate.toDateString() === today.toDateString() ||
-        bookingDate.toDateString() === yesterday.toDateString() ||
-        bookingDate > today
-       );
-      })
-      .map((booking) => (
-       <div key={booking.date} className="grid gap-4">
-        <div className="flex items-center justify-between space-y-6 mb-2">
-         <div className="flex items-center gap-2">
-          <div>
-           <div className="font-medium text-xs">{booking.barber}</div>
-           <div className="text-xs text-gray-500 dark:text-gray-400">
-            <div>
-             <p>{booking.date}</p>
-             <p>{booking.time}</p>
-             <p className="text-[#834333] font-bold tracking-widest underline">
-              {booking.location}
-             </p>
-            </div>
-           </div>
-          </div>
-         </div>
-         <SingleAppointment bookings={booking} />
-        </div>
-       </div>
-      ))}
-    </CardContent>
-   </Card>
-  </div>
- );
+    // Check if the booking date is today, yesterday, or in the future
+    return (
+      bookingDate.toDateString() === today.toDateString() ||
+      bookingDate.toDateString() === yesterday.toDateString() ||
+      bookingDate > today
+    );
+  });
+
+  return (
+    <div className="mt-auto p-4">
+      <Card className="">
+        <CardHeader className="pb-4">
+          <CardTitle className="text-sm">Upcoming Appointments</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {upcomingBookings.length > 0 ? (
+            upcomingBookings.map((booking) => (
+              <div key={booking.date} className="grid gap-4">
+                <div className="flex items-center justify-between space-y-6 mb-2">
+                  <div className="flex items-center gap-2">
+                    <div>
+                      <div className="font-medium text-xs">{booking.barber}</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400">
+                        <div>
+                          <p>{booking.date}</p>
+                          <p>{booking.time}</p>
+                          <p className="text-[#834333] font-bold tracking-widest underline">
+                            {booking.location}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <SingleAppointment bookings={booking} />
+                </div>
+              </div>
+            ))
+          ) : (
+            <p className="text-xs text-slate-500 tracking-wide">No upcoming bookings</p>
+          )}
+        </CardContent>
+      </Card>
+    </div>
+  );
 };
 
 export default function SideBar({ bookings }) {
