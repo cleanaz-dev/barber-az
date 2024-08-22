@@ -30,8 +30,8 @@ export default function SendAppointmentEmail(props) {
      <DialogHeader>
       <DialogTitle>Send Reminder</DialogTitle>
       <DialogDescription>
-       <p className="mb-4">Are you sure you want to send email reminder?</p>
-       <p></p>
+       <span className="mb-4">Are you sure you want to send email reminder?</span>
+       
       </DialogDescription>
      </DialogHeader>
 

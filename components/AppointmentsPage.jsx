@@ -21,6 +21,7 @@ import {
  View,
 } from "lucide-react";
 import { getAllEmployees } from "@/lib/action";
+import { ScrollArea } from "./ui/scroll-area";
 
 export default async function AppointmentsPage(props) {
  const numberOfEmployees = await getAllEmployees();
@@ -31,8 +32,9 @@ export default async function AppointmentsPage(props) {
   0
  );
  return (
-  <div className="flex flex-col min-h-screen">
-   <main className="p-6 flex flex-col">
+  <div className="flex flex-col h-screen">
+    <ScrollArea>
+   <main className="p-6 flex flex-col flex-grow overflow-y-auto">
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 mb-6">
      <Card>
       <CardHeader className="flex flex-row items-center justify-between pb-2">
@@ -40,7 +42,7 @@ export default async function AppointmentsPage(props) {
        <UsersIcon className="w-4 h-4 text-gray-500 " />
       </CardHeader>
       <CardContent>
-       <div className="text-2xl font-bold">111</div>
+       <p className="text-2xl font-bold">111</p>
        <p className="text-xs text-gray-500 ">
         +5.2% from last month
        </p>
@@ -54,7 +56,7 @@ export default async function AppointmentsPage(props) {
        <CalendarIcon className="w-4 h-4 text-gray-500 " />
       </CardHeader>
       <CardContent>
-       <div className="text-2xl font-bold">{props.booking.length}</div>
+       <p className="text-2xl font-bold">{props.booking.length}</p>
        <p className="text-xs text-gray-500 ">
         +12% from last week
        </p>
@@ -66,7 +68,7 @@ export default async function AppointmentsPage(props) {
        <UsersIcon className="w-4 h-4 text-gray-500 " />
       </CardHeader>
       <CardContent>
-       <div className="text-2xl font-bold">{numberOfEmployees.length}</div>
+       <p className="text-2xl font-bold">{numberOfEmployees.length}</p>
        <p className="text-xs text-gray-500 ">
         +2 new hires this month
        </p>
@@ -78,19 +80,19 @@ export default async function AppointmentsPage(props) {
        <DollarSignIcon className="w-4 h-4 text-gray-500 " />
       </CardHeader>
       <CardContent>
-       <div className="text-2xl font-bold">${totalPrice}</div>
+       <p className="text-2xl font-bold">${totalPrice}</p>
        <p className="text-xs text-gray-500 ">
         +20.1% from last month
        </p>
       </CardContent>
      </Card>
     </div>
-    <div className="flex-1">
-     <Card>
+    <div className="">
+     <Card className=" ">
       <CardHeader>
        <CardTitle>Appointments</CardTitle>
       </CardHeader>
-      <CardContent className="overflow-y-auto min-h-[300px] max-h-[600px]">
+      <CardContent className="flex-1 ">
        <Table className="text-xs">
         <TableHeader className="sticky top-0 z-10">
          <TableRow>
@@ -99,7 +101,7 @@ export default async function AppointmentsPage(props) {
           <TableHead>Time/Date</TableHead>
           <TableHead>Employee/Location</TableHead>
           <TableHead>Price</TableHead>
-          <TableHead className="text-center">View</TableHead>
+          
          </TableRow>
         </TableHeader>
         <TableBody >
@@ -122,13 +124,7 @@ export default async function AppointmentsPage(props) {
            <TableCell>
             <p className="font-bold">$ {booking.service.price}</p>
            </TableCell>
-           <TableCell className="text-center">
-            <button className="bg-amber-900 py-3 px-4 rounded-lg hover:bg-slate-100 text-white hover:text-amber-900 transition-colors duration-300">
-             <Link href="/">
-              <TelescopeIcon className="size-4" />
-             </Link>
-            </button>
-           </TableCell>
+           
           </TableRow>
          ))}
         </TableBody>
@@ -137,6 +133,7 @@ export default async function AppointmentsPage(props) {
      </Card>
     </div>
    </main>
+   </ScrollArea>
   </div>
  );
 }

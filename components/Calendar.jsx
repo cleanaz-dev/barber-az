@@ -96,42 +96,34 @@ export default function CalendarApp({ bookings }) {
         </DialogHeader>
 
         <Table>
-         <TableCaption>A list of appointments for the day.</TableCaption>
-         <TableHeader>
-          <TableRow>
-           <TableHead className="w-[150px]">Hair Dresser</TableHead>
-           <TableHead>Service</TableHead>
-           <TableHead>Location</TableHead>
-           <TableHead className="text-center">Amount</TableHead>
-           <TableHead className="text-center">View</TableHead>
-          </TableRow>
-         </TableHeader>
-         <TableBody>
-          {list.map((item, index) => (
-           <TableRow key={item.id}>
-            <TableCell className="font-medium">{item.barber}</TableCell>
-            <TableCell>{item.service.name}</TableCell>
-            <TableCell>{item.location}</TableCell>
-            <TableCell className="text-center">$ {item.service.price}</TableCell>
-            <TableCell>
-             <Link href={`/admin/appointments/${item.id}`}>
-              <Button variant="outline" size="sm">
-               <EyeIcon className="w-4 h-4 text-gray-500" />
-              </Button>
-             </Link>
-            </TableCell>
-           </TableRow>
-          ))}
-         </TableBody>
-         <TableRow className="bg-slate-50">
-          <TableCell colSpan={4} className="font-medium text-right">
-           Total
-          </TableCell>
-          <TableCell className="text-center font-medium">
-           $ {totalPrice}
-          </TableCell>
-         </TableRow>
-        </Table>
+  <TableCaption>A list of appointments for the day.</TableCaption>
+  <TableHeader>
+    <TableRow>
+      <TableHead className="w-[150px]">Hair Dresser</TableHead>
+      <TableHead>Service</TableHead>
+      <TableHead>Location</TableHead>
+      <TableHead className="text-center">Amount</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    {list.map((item) => (
+      <TableRow key={item.id}>
+        <TableCell className="font-medium">{item.barber}</TableCell>
+        <TableCell>{item.service.name}</TableCell>
+        <TableCell>{item.location}</TableCell>
+        <TableCell className="text-center">$ {item.service.price}</TableCell>
+      </TableRow>
+    ))}
+    <TableRow className="bg-slate-50">
+      <TableCell colSpan={4} className="font-medium text-right">
+        Total
+      </TableCell>
+      <TableCell className="text-center font-medium">
+        $ {totalPrice}
+      </TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
        </DialogContent>
       </Dialog>
      </li>

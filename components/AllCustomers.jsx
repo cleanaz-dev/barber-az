@@ -22,14 +22,14 @@ export default async function AllCustomers({customers}) {
      <h1 className="text-xl font-semibold ">Customers</h1>
      {/* <Button size="sm" >Add Customer</Button> */}
     </header>
-    <div className="border shadow-sm">
+    <div className="border shadow-sm m-6 rounded-lg p-2">
      <Table>
-      <TableHeader>
+      <TableHeader >
        <TableRow>
-        <TableHead>Name</TableHead>
-        <TableHead>Email</TableHead>
-        <TableHead>Phone</TableHead>
-        <TableHead>VIP</TableHead>
+        <TableHead className="text-slate-300">Name</TableHead>
+        <TableHead className="text-slate-300">Email</TableHead>
+        <TableHead className="text-slate-300">Phone</TableHead>
+        <TableHead className="text-slate-300">VIP</TableHead>
         {/* <TableHead className="text-right">Actions</TableHead> */}
        </TableRow>
       </TableHeader>

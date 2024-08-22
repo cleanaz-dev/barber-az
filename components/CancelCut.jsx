@@ -17,8 +17,6 @@ export function CancelCutButton(props) {
 
  return (
   <Dialog>
-   
-   
     <DialogTrigger asChild>
      <Button variant="destructive">Cancel</Button>
     </DialogTrigger>
@@ -26,14 +24,12 @@ export function CancelCutButton(props) {
     <form action={cancelBooking}>
     <input type="hidden" name="id" value={booking.id} />
     <input type="hidden" name="bookingId" value={booking.bookingId} />
-     <DialogHeader>
+     <DialogHeader className="mb-4">
       <DialogTitle>Cancel Appointment</DialogTitle>
       <DialogDescription>
-       <p className="mb-4">Are you sure you want to cancel the appointment?</p>
+       Are you sure you want to cancel the appointment?
       </DialogDescription>
      </DialogHeader>
-
-    
      <DialogFooter>
       <CancelAppointmentButton />
      </DialogFooter>

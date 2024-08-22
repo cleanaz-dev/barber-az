@@ -1,8 +1,5 @@
 import React from "react";
 import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
-import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import {
  Dialog,
  DialogContent,
@@ -20,31 +17,34 @@ import { CancelCutButton } from "./CancelCut";
 export default function SingleAppointment({ bookings }) {
 
  return (
-  <>
+  <div>
    <Dialog>
     <DialogTrigger asChild>
-     <Button variant="outline">View</Button>
+     <Button variant="outline" size="sm">View</Button>
     </DialogTrigger>
     <DialogContent>
      <DialogHeader>
       <DialogTitle>Appointment Details</DialogTitle>
       <DialogDescription>
-        <div className="flex justify-between">
-          <p>View appointment details.</p>
-          <p>{bookings.reminderSent ? <Badge className="bg-[#834333] font-light hover:bg-[#834333]"> Reminder Sent</Badge> : null }</p>
-        </div>
+       
+          <span>View appointment details.</span>
+          {bookings.reminderSent ? <Badge className="bg-[#834333] font-light hover:bg-[#834333]"> Reminder Sent</Badge> : null }
+          
+       
     </DialogDescription>
      </DialogHeader>
+
      <div className="grid grid-cols-2 gap-2">
       <div>
        <h1 className="text-gray-400">Client Name</h1>
-       <p>
+       <div>
         {bookings.name}{" "}
         {bookings.name === "Paul" && (
          <Badge className="bg-[#834333]">VIP</Badge>
         )}
-       </p>
+       </div>
       </div>
+
       <div>
        <h1 className="text-gray-400">Service</h1>
        <p>{bookings.service.name}</p>
@@ -86,6 +86,6 @@ export default function SingleAppointment({ bookings }) {
      </DialogFooter>
     </DialogContent>
    </Dialog>
-  </>
+  </div>
  );
 }

@@ -33,15 +33,15 @@ export default function AllEmployees(props) {
     <h1 className="text-xl font-semibold ">Employees</h1>
     {/* <AddEmployeeDialog /> */}
    </header>
-   <div className="border shadow-sm">
+   <div className="border shadow-sm m-6 rounded-lg p-2">
     <Table>
      <TableHeader>
       <TableRow>
-       <TableHead>Name</TableHead>
-       <TableHead>Contact</TableHead>
-       <TableHead>Location</TableHead>
-       <TableHead>Schedule</TableHead>
-       <TableHead className="text-right">Actions</TableHead>
+       <TableHead className="text-slate-300">Name</TableHead>
+       <TableHead className="text-slate-300">Contact</TableHead>
+       <TableHead className="text-slate-300">Location</TableHead>
+       <TableHead className="text-slate-300">Schedule</TableHead>
+       <TableHead className="text-slate-300 text-right">Actions</TableHead>
       </TableRow>
      </TableHeader>
      <TableBody className="text-xs">

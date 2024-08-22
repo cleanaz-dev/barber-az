@@ -11,7 +11,7 @@ export default async function AdminLayout({ children }) {
     <SideBar bookings={bookings} />
    </aside>
    <main className="flex-grow">
-    <div class="flex md:hidden bg-gray-900 text-white items-center py-2 px-6">
+    <div className="flex md:hidden bg-gray-900 text-white items-center py-2 px-6">
      
      <div className="cursor-pointer">
       <SmallMenu />
