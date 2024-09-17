@@ -35,7 +35,6 @@ export function CancelCutButton(props) {
      </DialogFooter>
      </form>
     </DialogContent>
-   
   </Dialog>
  );
 }

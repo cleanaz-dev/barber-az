@@ -25,10 +25,11 @@ export default function SingleAppointment({ bookings }) {
     <DialogContent>
      <DialogHeader>
       <DialogTitle>Appointment Details</DialogTitle>
-      <DialogDescription>
+      <DialogDescription >
        
-          <span>View appointment details.</span>
-          {bookings.reminderSent ? <Badge className="bg-[#834333] font-light hover:bg-[#834333]"> Reminder Sent</Badge> : null }
+          View appointment details.
+          {bookings.reminderSent ? <span className="ml-2 font-bold underline">Reminder Sent</span> : null }
+         
           
        
     </DialogDescription>

@@ -6,40 +6,73 @@
 import Image from "next/image";
 import Link from "next/link";
 import heroImage from "../public/hero-section.jpg";
-import { MessageCircle, User, UserCircle } from "lucide-react";
+import {
+ DiamondIcon,
+ GemIcon,
+ MessageCircle,
+ User,
+ UserCircle,
+} from "lucide-react";
+import { Great_Vibes } from "next/font/google";
 
+const greatVibes = Great_Vibes({ subsets: ["latin"], weight: "400" });
+
+const serviceItems = [
+ {
+  id: 1,
+  title: "Haricuts",
+  description:
+   "Our precision haircuts are tailored to your unique style and face shape, providing excellence.",
+ },
+ {
+  id: 2,
+  title: "Shaves",
+  description:
+   "Experience the ultimate in relaxation with our traditional straight-razor shaves.",
+ },
+ {
+  id: 3,
+  title: "Grooming",
+  description:
+   "Maintain your look with our range of grooming services, including beard trims and hot towel treatments.",
+ },
+];
+const barberItems = [
+ {
+  id: 1,
+  name: "John Doe",
+  image: "/barber1.jpg",
+  title: "VIP Barber",
+ },
+ {
+  id: 2,
+  name: "Jane Smith",
+  image: "/barber2.jpg",
+  title: "HOF Barber",
+ },
+ {
+  id: 3,
+  name: "Mike Johnson",
+  image: "/barber3.jpg",
+  title: "MVP Barber",
+ },
+];
 export default function HeroSection() {
  return (
-  <div className="flex flex-col min-h-[100dvh]">
+  <div className="flex flex-col min-h-[100dvh] max-w-7xl mx-auto">
    <header className="px-4 lg:px-6 h-14 flex items-center mt-2">
     <Link className="flex items-center justify-center" href="#">
      <ScissorsIcon className="h-6 w-6 text-white mr-4" />
      <span className="text-white"> Clean AZ Cutz</span>
     </Link>
     <div className="ml-auto">
-    <Link
-     className="inline-flex h-10 items-center justify-center rounded-md bg-[#834333] px-4 text-sm  text-white font-medium hover:bg-amber-900"
-     href="/admin"
-    >
-     <p className="inline-flex">
-      Admin Login
-     </p>
-    </Link>
+     <Link
+      className="inline-flex h-10 items-center justify-center rounded-md bg-[#834333] px-4 text-sm  text-white font-medium hover:bg-amber-900"
+      href="/admin"
+     >
+      <p className="inline-flex">Admin Login</p>
+     </Link>
     </div>
-    {/* <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link className="text-sm text-white font-medium hover:underline underline-offset-4" href="#">
-            Services
-          </Link>
-          <Link className="text-sm text-white font-medium hover:underline underline-offset-4" href="#">
-            Barbers
-          </Link>
-          <Link className="text-sm text-white font-medium hover:underline underline-offset-4" href="#">
-            Testimonials
-          </Link>
-          <Link className="text-sm text-white font-medium hover:underline underline-offset-4" href="#">
-            Contact
-          </Link>
-        </nav> */}
    </header>
    <main className="flex-1">
     <section className="w-full py-12 md:py-24 lg:py-32">
@@ -68,22 +101,25 @@ export default function HeroSection() {
           className="inline-flex h-10 items-center justify-center rounded-md bg-[#834333] px-8 text-sm  text-white font-medium hover:bg-amber-900"
           href="#"
          > */}
-          <p className="flex  justify-center h-10 items-center bg-[#834333] rounded-lg text-white">
-           Click <MessageCircle className="w-4 h-5 mx-2" /> to Book Now!
-          </p>
+         <p className="flex  justify-center h-10 items-center bg-[#834333] rounded-lg text-white">
+          Click <MessageCircle className="w-4 h-5 mx-2" /> to Book Now!
+         </p>
          {/* </Link> */}
         </div>
        </div>
       </div>
      </div>
     </section>
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-800">
+    <section className="flex flex-col w-full pb-12 md:pb-24 lg:pb-16 bg-gray-800">
+     {" "}
+     <div className="flex gap-10 items-center justify-center text-center text-white px-3 py-1 text-5xl pt-16 mb-16 ">
+      <GemIcon className="animate-pulse mb-2"/>
+      <span className={`${greatVibes.className} border-b` }>Our Services</span>
+      <GemIcon className="animate-pulse mb-2"/>
+     </div>
      <div className="container px-4 md:px-6">
       <div className="flex flex-col items-center justify-center space-y-4 text-center">
        <div className="space-y-2">
-        <div className="inline-block text-white rounded-lg px-3 py-1 text-sm bg-[#834333] mb-2">
-         Our Services
-        </div>
         <h2 className="text-3xl text-white font-bold tracking-tighter sm:text-5xl">
          Tailored to Your Needs
         </h2>
@@ -93,38 +129,31 @@ export default function HeroSection() {
         </p>
        </div>
        <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-12">
-        <div className="grid gap-1">
-         <h3 className="text-xl font-bold text-white">Haircuts</h3>
-         <p className="text-gray-400">
-          Our precision haircuts are tailored to your unique style and face
-          shape, providing excellence.
-         </p>
-        </div>
-        <div className="grid gap-1">
-         <h3 className="text-xl font-bold text-white">Shaves</h3>
-         <p className="text-gray-400">
-          Experience the ultimate in relaxation with our traditional
-          straight-razor shaves.
-         </p>
-        </div>
-        <div className="grid gap-1">
-         <h3 className="text-xl font-bold text-white">Grooming</h3>
-         <p className="text-gray-400">
-          Maintain your look with our range of grooming services, including
-          beard trims and hot towel treatments.
-         </p>
-        </div>
+        {serviceItems.map((service) => (
+         <div key={service.id} className="grid gap-1">
+          <div className="flex items-center space-x-4">
+           <div>
+            <h3 className="text-xl font-bold text-white">{service.title}</h3>
+            <p className="text-gray-400">{service.description}</p>
+           </div>
+          </div>
+         </div>
+        ))}
        </div>
       </div>
      </div>
     </section>
-    <section className="w-full py-12 md:py-24 lg:py-32">
+    <section className="flex flex-col w-full pb-12 md:pb-24 lg:pb-16">
+     {" "}
+     <div className="flex gap-10 items-center justify-center text-center text-white rounded-lg px-3 py-1 text-5xl pt-16 mb-16">
+      <GemIcon className="animate-pulse mb-2"/><span className={`${greatVibes.className} text-[#834333] border-b`}>
+       Our Barbers
+      </span>
+      <GemIcon className="animate-pulse mb-2"/>
+     </div>
      <div className="container px-4 md:px-6">
       <div className="flex flex-col items-center justify-center space-y-4 text-center">
        <div className="space-y-2">
-        <div className="inline-block rounded-lg bg-[#834333] px-3 py-1 text-sm text-white mb-2">
-         Our Barbers
-        </div>
         <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-white">
          Skilled Hands, Timeless Expertise
         </h2>
@@ -134,56 +163,30 @@ export default function HeroSection() {
         </p>
        </div>
        <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-12">
-        <div className="grid gap-4">
-         {/* <img
-                    alt="Barber 1"
-                    className="mx-auto aspect-square overflow-hidden rounded-full object-cover"
-                    height={300}
-                    src="/placeholder.svg"
-                    width={300}
-                  /> */}
-         <div className="text-center">
-          <h3 className="text-xl font-bold text-white">John Doe</h3>
-          <p className="text-gray-400">VP Barber</p>
+        {barberItems.map((barber) => (
+         <div key={barber.id} className="grid gap-1">
+          <div className="flex items-center space-x-4">
+           <div>
+              <h3 className="text-xl font-bold text-white">{barber.name}</h3>
+            <p className="text-gray-400">{barber.title}</p>
+           </div>
+          </div>
          </div>
-        </div>
-        <div className="grid gap-4">
-         {/* <img
-                    alt="Barber 2"
-                    className="mx-auto aspect-square overflow-hidden rounded-full object-cover"
-                    height={300}
-                    src="/placeholder.svg"
-                    width={300}
-                  /> */}
-         <div className="text-center text-white">
-          <h3 className="text-xl font-bold">Eric Smith</h3>
-          <p className="text-gray-400">Senior Barber</p>
-         </div>
-        </div>
-        <div className="grid gap-4">
-         {/* <img
-                    alt="Barber 3"
-                    className="mx-auto aspect-square overflow-hidden rounded-full object-cover"
-                    height={300}
-                    src="/placeholder.svg"
-                    width={300}
-                  /> */}
-         <div className="text-center">
-          <h3 className="text-xl font-bold text-white">Michael Johnson</h3>
-          <p className="text-gray-400 ">Apprentice Barber</p>
-         </div>
-        </div>
+        ))}
        </div>
       </div>
      </div>
     </section>
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-800">
+    <section className="w-full pb-12 md:pb-24 lg:pb-32 bg-gray-800">
+     {" "}
+     <div className="flex gap-10 items-center justify-center text-center text-white rounded-lg px-3 py-1 text-5xl pt-16 mb-16">
+      <GemIcon className="animate-pulse mb-2"/>
+      <span className={`${greatVibes.className} border-b` }>Testimonials</span>
+      <GemIcon className="animate-pulse mb-2"/>
+     </div>
      <div className="container px-4 md:px-6">
       <div className="flex flex-col items-center justify-center space-y-4 text-center">
        <div className="space-y-2">
-        <div className="inline-block rounded-lg bg-[#834333] px-3 py-1 text-sm text-white mb-2">
-         Testimonials
-        </div>
         <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-white">
          What Our Customers Say
         </h2>

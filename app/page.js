@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 export default function HomePage() {
  const pathName = usePathname();
  return (
-  <div className="container flex mx-auto bg-gray-900">
+  <div className=" bg-gray-900">
    <HeroSection />
    {pathName === '/' && <VoiceflowScript />}
   </div>

@@ -7,7 +7,6 @@ import {
  DialogHeader,
  DialogTitle,
  DialogTrigger,
- Dia,
  DialogClose,
 } from "./ui/dialog";
 import { SendAppointmentReminderButton } from "./SubmitButton";
@@ -27,18 +26,18 @@ export default function SendAppointmentEmail(props) {
      <input type="hidden" name="email" value={bookings.email} />
      <input type="hidden" name="id" value={bookings.id} />
      <input type="hidden" name="bookingId" value={bookings.bookingId} />
-     <DialogHeader>
+     <DialogHeader className="mb-4">
       <DialogTitle>Send Reminder</DialogTitle>
       <DialogDescription>
-       <span className="mb-4">Are you sure you want to send email reminder?</span>
+      Are you sure you want to send email reminder?
        
       </DialogDescription>
      </DialogHeader>
 
      <DialogFooter>
-      <DialogClose>
+      
        <SendAppointmentReminderButton />
-      </DialogClose>
+      
      </DialogFooter>
     </form>
    </DialogContent>

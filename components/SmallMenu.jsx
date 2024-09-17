@@ -47,13 +47,13 @@ export default function SmallMenu() {
   return (
     <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
       <SheetTrigger asChild>
-       <p className='flex gap-2'> <LayoutDashboard /> Dashboard</p>
+       <p className='flex gap-2'> <LayoutDashboard className='animate-pulse'/> Dashboard</p>
       </SheetTrigger>
       <SheetContent className="bg-gray-900 border-gray-900 border-2">
         <SheetHeader>
-          <SheetTitle><h1 className="text-white">Edit profile</h1></SheetTitle>
+          <SheetTitle><h1 className="text-white">Menu</h1></SheetTitle>
           <SheetDescription>
-            <p className="text-slate-300">Make changes to your profile here. Click save when you're done.</p>
+            <p className="text-slate-300 mb-4"></p>
           </SheetDescription>
         </SheetHeader>
         <div className="flex-1 overflow-auto py-2 ">

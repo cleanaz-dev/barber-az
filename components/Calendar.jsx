@@ -1,20 +1,7 @@
 "use client";
 
-import {
- BellIcon,
- CalendarIcon,
- ChevronLeftIcon,
- ChevronRightIcon,
- EyeIcon,
- HomeIcon,
- SettingsIcon,
- UsersIcon,
-} from "lucide-react";
-import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { Button } from "./ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import {
  Dialog,
  DialogContent,
@@ -24,8 +11,6 @@ import {
  DialogTitle,
  DialogTrigger,
 } from "./ui/dialog";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
 import {
  Table,
  TableBody,
@@ -35,9 +20,7 @@ import {
  TableHeader,
  TableRow,
 } from "./ui/table";
-import { Calendar, Whisper, Popover, Badge } from "rsuite";
-import { list } from "postcss";
-import CalendarDashboard from "./CalendarDashboard";
+import { Calendar } from "rsuite";
 
 function getBookingList(bookings, currentDate) {
  const bookingByDay = {};
@@ -59,8 +42,6 @@ function getBookingList(bookings, currentDate) {
 }
 
 export default function CalendarApp({ bookings }) {
-
-
  function renderCell(date) {
   const bookingByDay = getBookingList(bookings, date);
   const day = date.getDate();
@@ -75,16 +56,15 @@ export default function CalendarApp({ bookings }) {
   }
   return (
    <>
-   
     <ul className="calendar-todo-list">
      <li>
       <Dialog>
        <DialogTrigger asChild>
-        <Button variant="secondary" className="w-full">
+        <Button variant="secondary" className="w-full bg-green-400 hover:bg-cyan-400 transition-colors duration-300">
          {list.length}
         </Button>
        </DialogTrigger>
-       <DialogContent className="sm:max-w-[550px]">
+       <DialogContent className="max-w-[400px] md:max-w-[800px]">
         <DialogHeader>
          <DialogTitle>
           <div>
@@ -96,34 +76,35 @@ export default function CalendarApp({ bookings }) {
         </DialogHeader>
 
         <Table>
-  <TableCaption>A list of appointments for the day.</TableCaption>
-  <TableHeader>
-    <TableRow>
-      <TableHead className="w-[150px]">Hair Dresser</TableHead>
-      <TableHead>Service</TableHead>
-      <TableHead>Location</TableHead>
-      <TableHead className="text-center">Amount</TableHead>
-    </TableRow>
-  </TableHeader>
-  <TableBody>
-    {list.map((item) => (
-      <TableRow key={item.id}>
-        <TableCell className="font-medium">{item.barber}</TableCell>
-        <TableCell>{item.service.name}</TableCell>
-        <TableCell>{item.location}</TableCell>
-        <TableCell className="text-center">$ {item.service.price}</TableCell>
-      </TableRow>
-    ))}
-    <TableRow className="bg-slate-50">
-      <TableCell colSpan={4} className="font-medium text-right">
-        Total
-      </TableCell>
-      <TableCell className="text-center font-medium">
-        $ {totalPrice}
-      </TableCell>
-    </TableRow>
-  </TableBody>
-</Table>
+         <TableCaption>A list of appointments for the day.</TableCaption>
+         <TableHeader>
+          <TableRow>
+           <TableHead className="w-[150px] md:w-auto text-xs md:text-base">Stylist</TableHead>
+           <TableHead className="w-[150px] text-xs md:text-base">Service</TableHead>
+           <TableHead className="text-xs md:text-base">Location</TableHead>
+           <TableHead className="text-xs md:text-base ">Time</TableHead>
+           <TableHead className="text-center text-xs md:text-base">Amount</TableHead>
+          </TableRow>
+         </TableHeader>
+         <TableBody>
+          {list.map((item) => (
+           <TableRow key={item.id}>
+            <TableCell className="font-medium text-xs md:text-sm">{item.barber}</TableCell>
+            <TableCell className="font-medium text-xs md:text-sm">{item.service.name}</TableCell>
+            <TableCell className="font-medium text-xs md:text-sm">{item.location}</TableCell>
+            <TableCell className="font-medium text-xs md:text-sm  ">{item.time}</TableCell>
+            <TableCell className="text-center font-medium">
+             $ {item.service.price}
+            </TableCell>
+           </TableRow>
+          ))}
+          <TableRow className="bg-gradient-to-r from-slate-50 to-transparent">
+           <TableCell colSpan={4} className="font-medium text-left">
+            Total: <span className="text-green-500">${totalPrice}</span>
+           </TableCell>
+          </TableRow>
+         </TableBody>
+        </Table>
        </DialogContent>
       </Dialog>
      </li>
@@ -131,6 +112,9 @@ export default function CalendarApp({ bookings }) {
    </>
   );
  }
- return <><Calendar bordered renderCell={renderCell} /></>
- ;
+ return (
+  <>
+   <Calendar bordered renderCell={renderCell} />
+  </>
+ );
 }

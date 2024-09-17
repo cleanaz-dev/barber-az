@@ -29,7 +29,7 @@ export default async function AllCustomers({customers}) {
         <TableHead className="text-slate-300">Name</TableHead>
         <TableHead className="text-slate-300">Email</TableHead>
         <TableHead className="text-slate-300">Phone</TableHead>
-        <TableHead className="text-slate-300">VIP</TableHead>
+        <TableHead className="text-slate-300 text-center">VIP</TableHead>
         {/* <TableHead className="text-right">Actions</TableHead> */}
        </TableRow>
       </TableHeader>
@@ -39,7 +39,7 @@ export default async function AllCustomers({customers}) {
         <TableCell className="font-medium">{customer.name}</TableCell>
         <TableCell>{customer.email}</TableCell>
         <TableCell>{customer.phone}</TableCell>
-        {!customer.isVIP ?  <TableCell></TableCell> : <TableCell><Badge>VIP</Badge></TableCell>}
+        {!customer.isVIP ?  <TableCell></TableCell> : <TableCell className="text-center"><Badge>VIP</Badge></TableCell>}
         
         {/* <TableCell className="text-right">
          <Button className="ml-2" size="icon" variant="destructive">

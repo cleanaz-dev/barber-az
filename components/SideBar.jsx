@@ -23,6 +23,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { usePathname } from "next/navigation";
 import SingleAppointment from "./SingleAppointment";
+import { LogOutIcon } from "lucide-react";
+
 
 const navigationData = [
  {
@@ -45,6 +47,7 @@ const navigationData = [
   label: "Employees",
   href: "/admin/employees",
  },
+
 ];
 
 const UpcomingAppointments = ({ bookings }) => {
@@ -114,7 +117,7 @@ export default function SideBar({ bookings }) {
 
  return (
   <div className={`hidden md:grid h-screen w-full `}>
-   <div className={`border-r bg-gray-900 ${isCollapsed ? "w-20" : "w-72"} `}>
+   <div className={`border-r bg-gray-900 ${isCollapsed ? "w-20" : "w-72"}`}>
     <div className="flex h-full max-h-screen flex-col gap-2">
      <div className="flex h-[60px] items-center border-b-2 px-6">
       {!isCollapsed && (
