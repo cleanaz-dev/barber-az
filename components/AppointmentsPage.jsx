@@ -34,9 +34,9 @@ export default async function AppointmentsPage(props) {
  return (
   <div className="flex flex-col h-screen">
     <ScrollArea>
-   <main className="p-6 flex flex-col flex-grow overflow-y-auto">
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 mb-6">
-     <Card>
+   <main className="p-6 flex flex-col overflow-y-auto ">
+    <section className="flex flex-wrap w-full mb-6 gap-6 ">
+     <Card className="flex-1">
       <CardHeader className="flex flex-row items-center justify-between pb-2">
        <CardTitle className="text-sm font-medium">Total Customers</CardTitle>
        <UsersIcon className="w-4 h-4 text-gray-500 " />
@@ -48,7 +48,7 @@ export default async function AppointmentsPage(props) {
        </p>
       </CardContent>
      </Card>
-     <Card>
+     <Card className="flex-1">
       <CardHeader className="flex flex-row items-center justify-between pb-2">
        <CardTitle className="text-sm font-medium">
         Total Appointments
@@ -62,7 +62,7 @@ export default async function AppointmentsPage(props) {
        </p>
       </CardContent>
      </Card>
-     <Card>
+     <Card className="flex-1">
       <CardHeader className="flex flex-row items-center justify-between pb-2">
        <CardTitle className="text-sm font-medium">Active Employees</CardTitle>
        <UsersIcon className="w-4 h-4 text-gray-500 " />
@@ -74,7 +74,7 @@ export default async function AppointmentsPage(props) {
        </p>
       </CardContent>
      </Card>
-     <Card>
+     <Card className="flex-1">
       <CardHeader className="flex flex-row items-center justify-between pb-2">
        <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
        <DollarSignIcon className="w-4 h-4 text-gray-500 " />
@@ -86,8 +86,8 @@ export default async function AppointmentsPage(props) {
        </p>
       </CardContent>
      </Card>
-    </div>
-    <div className="">
+    </section>
+    <section className="">
      <Card className=" ">
       <CardHeader>
        <CardTitle>Appointments</CardTitle>
@@ -131,7 +131,7 @@ export default async function AppointmentsPage(props) {
        </Table>
       </CardContent>
      </Card>
-    </div>
+    </section>
    </main>
    </ScrollArea>
   </div>
