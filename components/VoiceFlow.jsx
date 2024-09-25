@@ -1,62 +1,63 @@
 "use client";
 
 import { useEffect } from 'react';
-import { usePathname } from 'next/navigation'; // Use usePathname from next/navigation
 import { CurrentDateGetter, FormExtension } from '../lib/extensions';
 
 const VoiceflowScript = () => {
-  const pathname = usePathname(); // Get the current pathname
-
   useEffect(() => {
-    // Only load the script if the current pathname is "/"
-    if (pathname === "/") {
-      const loadScript = () => {
-        if (document.getElementById('voiceflow-script')) {
-          return; // If script is already loaded, return early
+    const loadScript = () => {
+      // Check if the script is already loaded
+      if (document.getElementById('voiceflow-script')) {
+        return; // If script is already loaded, return early
+      }
+
+      const script = document.createElement('script');
+      script.id = 'voiceflow-script'; // Add an ID to the script for future checks
+      script.src = 'https://cdn.voiceflow.com/widget/bundle.mjs';
+      script.async = true;
+
+      script.onload = () => {
+        if (window.voiceflow && window.voiceflow.chat) {
+          window.voiceflow.chat
+            .load({
+              verify: { projectID: '662b09bb057f9feb198cce52' },
+              url: 'https://general-runtime.voiceflow.com',
+              versionID: 'production',
+              autostart: true,
+              allowDangerousHTML: true,
+              assistant: {
+                extensions: [FormExtension, CurrentDateGetter],
+              },
+            })
+            .then(() => {
+              // Set a delay to open the chat after loading
+              setTimeout(() => {
+                window.voiceflow.chat.open();
+              }, 1000); // 1000 milliseconds delay (1 second)
+            });
         }
-
-        const script = document.createElement('script');
-        script.id = 'voiceflow-script'; // Add an ID to the script for future checks
-        script.src = 'https://cdn.voiceflow.com/widget/bundle.mjs';
-        script.async = true;
-
-        script.onload = () => {
-          if (window.voiceflow && window.voiceflow.chat) {
-            window.voiceflow.chat
-              .load({
-                verify: { projectID: '662b09bb057f9feb198cce52' },
-                url: 'https://general-runtime.voiceflow.com',
-                versionID: 'production',
-                autostart: true,
-                allowDangerousHTML: true,
-                assistant: {
-                  extensions: [FormExtension, CurrentDateGetter],
-                },
-              })
-              .then(() => {
-                // Set a delay to open the chat after loading
-                setTimeout(() => {
-                  window.voiceflow.chat.open();
-                }, 1000); // 1000 milliseconds delay (1 second)
-              });
-          }
-        };
-
-        document.body.appendChild(script);
       };
 
-      loadScript();
-    }
+      // Append the script to the specific div
+      const voiceflowContainer = document.getElementById('voiceflow-container');
+      if (voiceflowContainer) {
+        voiceflowContainer.appendChild(script);
+      }
+    };
+
+    loadScript();
 
     return () => {
-      // Clean up if needed
+      // Optionally clean up if necessary
     };
-  }, [pathname]); // Add pathname as a dependency
+  }, []); // Run only once when the component mounts
 
   return null;
 };
 
 export default VoiceflowScript;
+
+
 
 
 
