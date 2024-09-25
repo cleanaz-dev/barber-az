@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Clean AZ Cutz",
-  description: "AI Powered Barber Shop",
+  description: "AI Powered Barber Shop Booking and AI Voice  Assistant",
 };
 
 export default function RootLayout({ children }) {
