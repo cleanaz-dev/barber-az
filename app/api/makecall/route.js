@@ -72,7 +72,7 @@ export async function POST(request) {
                   { 
                     "name": "ConfirmBooking",
                     "description": "Confirms an appointment for the customer",
-                    "url": "https://llmgem.ngrok.app/api/confirmation",
+                    "url": "https://barber-az.vercel.app/api/confirmation",
                     "method": "POST",
                     "body": {
                         "user_confirmation": "{{input.user_confirmation}}",
@@ -96,7 +96,7 @@ export async function POST(request) {
                   { 
                     "name": "ModifyBooking",
                     "description": "Modify an appointment for the customer",
-                    "url": "https://llmgem.ngrok.app/api/confirmation",
+                    "url": "https://barber-az.vercel.app/api/confirmation",
                     "method": "POST",
                     "body": {
                         "location": "{{input.location}}",
@@ -125,7 +125,7 @@ export async function POST(request) {
                   },           
         ],
               
-        "webhook": "https://llmgem.ngrok.app/api/booking",
+        "webhook": "https://barber-az.vercel.app/api/booking",
       },
     {
       // Configuration object where headers are set

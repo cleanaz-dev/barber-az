@@ -12,7 +12,7 @@ export async function POST(request) {
     // console.log("Voiceflow data:", data);
     
 
-    const makeCallResponse = await axios.post("https://llmgem.ngrok.app/api/makecall", data);
+    const makeCallResponse = await axios.post("https://barber-az.vercel.app/api/makecall", data);
     
     console.log("Call API Response:",makeCallResponse.data)
    
