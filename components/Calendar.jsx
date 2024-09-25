@@ -23,7 +23,7 @@ import {
 import { Calendar } from "rsuite";
 
 function getBookingList(bookings, currentDate) {
- const bookingByDay = {};
+ const bookingByDay = {}
 
  bookings.forEach((booking) => {
   const date = new Date(booking.date);

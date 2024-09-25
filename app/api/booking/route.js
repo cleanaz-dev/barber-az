@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server';
 export async function POST(request) {
   try {
     const { variables, metadata } = await request.json();
-    console.log(metadata)
+    
 
     const isUserConfirmed = variables?.user_confirmed === true;
     if (!isUserConfirmed) {
@@ -31,6 +31,7 @@ export async function POST(request) {
     console.log("Hapio Response:", hapioResponse.data);
 
     const formattedDate = formatDate(metadata.starts_at);
+
     const newBooking = await prisma.booking.create({
       data: {
         name: metadata.name,

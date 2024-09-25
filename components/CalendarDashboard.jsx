@@ -31,6 +31,7 @@ export default function CalendarDashboard(props) {
  const locationCounts = getLocationCounts(bookings);
 ;
  const locationEntries = Object.entries(locationCounts);
+ 
  return (
   <div className="flex flex-col h-full">
    <header className="px-6 py-4 flex items-center justify-between">
